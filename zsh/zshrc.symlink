@@ -2,9 +2,15 @@
 export ZSH=$HOME/.dotfiles
 
 # Code folder
-export PROJECTS=~/src 
+export PROJECT_SOURCE=~/src 
 
-# ANTIGEN
+if [[ -s "${HOME}/.localrc" ]]; then
+    source "${HOME}/.localrc"
+fi
+
+###########
+# ANTIGEN #
+###########
 source $HOME/.antigen/antigen.zsh
 
 # Load oh my zsh library
@@ -16,3 +22,5 @@ antigen bundle git
 # Syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+# End antigen
+antigen apply
