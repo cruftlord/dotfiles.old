@@ -5,7 +5,7 @@
     insteadOf = https://github.com/
 [core]
     editor = /usr/local/bin/vim
-    excludesfile = $HOME/.gitignore
+    excludesfile = ~/.gitignore
 [web]
     browser = safari
 [color]
