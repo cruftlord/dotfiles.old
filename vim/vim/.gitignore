@@ -4,3 +4,4 @@
 /undodir
 /ftplugin
 /plugged
+/autoload/gocomplete.vim

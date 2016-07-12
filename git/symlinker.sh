@@ -2,8 +2,8 @@
 
 # This is where all the config goes for this service, EDIT HERE
 # declare the list of files to receive juicy linking
-PROGRAM_NAME="VIM"
-declare -a filelist=("vim" "vimrc")
+PROGRAM_NAME="GIT"
+declare -a filelist=("gitignore_global" "gitconfig")
 
 # Finds out the script location, and the directory it's in
 # SCRIPTDIR=$(readlink -f "$0")
@@ -33,4 +33,7 @@ do
 	Linkit "$DOTFILESDIR" "$TARGETDIR" "$filename"
 done
 
-
+# GIT specific stuff
+echo "Copying gitconfig.local file - EDIT THIS FILE to put in Github Token"
+echo "Copying $DOTFILESDIR/gitconfig.local to $TARGETDIR/.gitconfig.local"
+cp "$DOTFILESDIR/gitconfig.local" "$TARGETDIR/.gitconfig.local"
