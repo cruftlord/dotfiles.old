@@ -1,0 +1,196 @@
+" vimplug load
+set nocompatible
+filetype off
+call plug#begin('~/.vim/plugged')
+
+" NERDTree - File Manager
+Plug 'scrooloose/nerdtree'
+" Syntax Highlighter
+Plug 'scrooloose/syntastic'
+" Hashicorp Formatter
+Plug 'fatih/vim-hclfmt'
+" Does some Terraform stuff
+Plug 'markcornick/vim-terraform'
+" Puppet VIM highlight
+Plug 'puppetlabs/puppet-syntax-vim'
+" Vagrant Stuff
+Plug 'hashivim/vim-vagrant'
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
+" NERD Commenter
+Plug 'scrooloose/nerdcommenter'
+" Awesome File Finder
+Plug 'ctrlpvim/ctrlp.vim'
+" Code Completion
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --clang-completer'}
+" Vim-Go, essential. Remember :GoInstallBinaries
+Plug 'fatih/vim-go', {'for': ['go']}
+Plug 'nsf/gocode', {'rtp': 'vim/', 'for' : ['go'], 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+" EasyMotion, which rules
+Plug 'easymotion/vim-easymotion'
+" TagBar! Remember :TagbarToggle
+Plug 'majutsushi/tagbar'
+
+" Git Wrapper
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Gist
+Plug 'mattn/gist-vim'
+" WEB API Interface system for Gist
+Plug 'mattn/webapi-vim'
+
+" Make sure to install Powerline adapted fonts for the below
+" You can find them in the dotfiles repo under fonts
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Molokai
+Plug 'fatih/molokai'
+
+" Put after all your plugins have installed
+call plug#end()
+
+""""""""""""""
+" APPEARANCE "
+""""""""""""""
+
+" Various niceness
+set ruler
+set cursorline
+set number
+" Does the tab complete bar
+set wildmenu
+" does the matching brackets thing
+set showmatch
+" Show Leader Icon
+set showcmd
+
+" get rid of YCM autocomplete window
+autocmd CompleteDone * pclose
+" and make sure it never appears
+set completeopt-=preview
+
+" Split Windows Below and Right
+set splitbelow
+set splitright
+
+" Sets Clipboard integration
+set clipboard=unnamed
+
+" Store Undos outside of Vim session - super handy
+set undofile
+set undodir=~/.vim/undodir
+
+"""""""""""
+" AIRLINE "
+"""""""""""
+
+" Puts in pretty Powerline characters for Airline
+" Make sure to put the Powerline fonts in the Font Book and install them
+let g:airline_powerline_fonts = 1
+
+" Smart Tab Line
+let g:airline#extensions#tabline#enabled = 1
+
+" Enables it in a single window
+set laststatus=2
+
+"""""""""""""""""
+" Colours stuff "
+"""""""""""""""""
+" For terminals
+colorscheme molokai
+
+" Make stuff brown
+" let g:molokai_original = 1
+
+let g:rehash256 = 1
+
+""""""""""""""""""
+" Syntax & Stuff "
+""""""""""""""""""
+
+" Go Syntax Highlighting
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_operators = 1
+let g:go_fmt_command = "goimports"
+
+" Set Python Highlighter to Python 3
+" Uses Homebrew Python 3
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+
+" Fixed Backspace issues
+set backspace=indent,eol,start
+
+" Fixes underlines
+set nospell
+
+" NERDTree config
+let g:nerdtree_tabs_open_on_new_tab = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_smart_startup_focus = 1
+let g:nerdtree_tabs_autoclose = 1
+let g:nerdtree_tabs_synchronize_focus = 1
+let g:nerdtree_tabs_focus_on_files = 1
+
+" for gist.vim
+let g:gist_detect_filetype = 1
+let g:gist_post_private = 1
+let g:gist_show_privates = 1
+
+" Enables Syntax
+filetype plugin indent on
+syntax on
+
+" I code in Go so tabs are critical
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Don't expand tabs for Go files
+au BufRead,BufNewFile *.{go|proto} set noexpandtab
+
+""""""""""""""""
+" KEY BINDINGS "
+""""""""""""""""
+
+nmap <F5> :NERDTreeToggle<CR>
+nmap <F6> :TagbarToggle<CR>
+
+" Window Split Navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"""""""""""""""""""""""
+" EASYMOTION BINDINGS "
+"""""""""""""""""""""""
+" Hell yeah!
+let g:EasyMotion_do_mapping = 1
+" Adjusts the leader binding
+map <Leader> <Plug>(easymotion-prefix)
+
+""""""""""""""
+" SWAP FILES "
+""""""""""""""
+
+" this subsection stops swap cruft ruining my git repos
+" make sure to add the .backup folder to .gitignore
+" 1. Automatically create .backup directory, writable by the group.
+if filewritable(".") && ! filewritable(".backup")
+    silent execute '!umask 002; mkdir .backup'
+endif
+" 2. Now the same for .swap
+" Automatically create .backup directory, writable by the group.
+if filewritable(".") && ! filewritable(".swap")
+    silent execute '!umask 002; mkdir .swap'
+endif
+" 3. Set backup and temp folders
+set backupdir=./.backup,.,/tmp
+set directory=./.swap,.,/tmp
