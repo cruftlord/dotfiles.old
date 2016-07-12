@@ -15,22 +15,22 @@ TARGETDIR="$HOME"
 
 # This function creates a symlink
 Linkit() {
-	# First argument has to be Source
-	# Second is Target
-	# Third is file in question
-	SOURCE="$1"
-	TARGET="$2"
-	FILE="$3"
-	echo "Linking $SOURCE/$FILE to $TARGET/.$FILE"
-	ln -s "$SOURCE/$FILE" "$TARGET/.$FILE"
+    # First argument has to be Source
+    # Second is Target
+    # Third is file in question
+    SOURCE="$1"
+    TARGET="$2"
+    FILE="$3"
+    echo "Linking $SOURCE/$FILE to $TARGET/.$FILE"
+    ln -s "$SOURCE/$FILE" "$TARGET/.$FILE"
 }
 
 # Now do a loop
 echo "Linking files for: $PROGRAM_NAME"
 for filename in "${filelist[@]}"
 do
-	# calls the function with the arguments
-	Linkit "$DOTFILESDIR" "$TARGETDIR" "$filename"
+    # calls the function with the arguments
+    Linkit "$DOTFILESDIR" "$TARGETDIR" "$filename"
 done
 
 # GIT specific stuff
