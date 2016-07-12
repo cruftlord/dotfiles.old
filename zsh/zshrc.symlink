@@ -1,0 +1,18 @@
+# Shortcut to the ZSH folder
+export ZSH=$HOME/.dotfiles
+
+# Code folder
+export PROJECTS=~/src 
+
+# ANTIGEN
+source $HOME/antigen/antigen.zsh
+
+# Load oh my zsh library
+antigen use oh-my-zsh
+
+# Default bundles
+antigen bundle git
+
+# Syntax highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+

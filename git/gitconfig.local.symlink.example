@@ -4,3 +4,6 @@
     email = giganticus@gmail.com 
     token = SetTokenHere
     signingkey = SetKeyHere 
+
+[credential]
+    helper = CredentialHelperHere
