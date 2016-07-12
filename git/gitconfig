@@ -1,40 +1,40 @@
 [include]
-	# Put Username / Creds / Token in this file
-	path = ~/.gitconfig.local
+    # Put Username / Creds / Token in this file
+    path = ~/.gitconfig.local
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
 [core]
-	editor = /usr/local/bin/vim
-	excludesfile = /Users/dafydd.woods/.gitignore_global
+    editor = /usr/local/bin/vim
+    excludesfile = /Users/dafydd.woods/.gitignore_global
 [web]
-	browser = safari
+    browser = safari
 [color]
-	ui = true
+    ui = true
 [color "branch"]
-	current = yellow bold
-	local = green bold
-	remote = cyan bold
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [color "status"]
-	added = green bold
-	changed = yellow bold
-	untracked = red bold
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
 [github]
-	user = sirgiganticus
+    user = sirgiganticus
 [gitlab]
     user = giganticus
 [push]
-	default = matching
+    default = matching
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
 [commit]
-	gpgSign = true
+    gpgSign = true
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
