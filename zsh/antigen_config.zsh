@@ -20,11 +20,6 @@ antigen bundle ssh-agent
 # Syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# Theme
-antigen theme agnoster
-# This is for agnoster!
-DEFAULT_USER="dafydd.woods"
-
 # Test for OS
 CURRENT_OS=`uname -s`
 if [[ $CURRENT_OS == 'Darwin' ]]; then
