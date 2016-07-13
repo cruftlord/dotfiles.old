@@ -35,4 +35,4 @@ echo "› brew bundle"
 brew bundle
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+find . -not -path "*/YouCompleteMe/*" -not -path "*/antigen.symlink/*" -name install.sh | while read installer ; do sh -c "${installer}" ; done

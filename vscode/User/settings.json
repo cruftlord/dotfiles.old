@@ -1,0 +1,19 @@
+// Place settings here to override defaults
+{
+	"editor.fontFamily": "Menlo for Powerline",
+    "editor.fontSize": 14,
+    "editor.rulers": [80],
+
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.backup": true,
+        "**/.swap": true
+    },
+
+    "go.formatTool": "gofmt",
+    "go.formatOnSave": true,
+    "go.lintOnSave": true,
+    "go.vetOnSave": true,
+
+    "python.pythonPath": "/usr/local/bin/python3"
+}
