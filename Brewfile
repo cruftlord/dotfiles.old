@@ -51,6 +51,7 @@ brew 'wget'
 
 cask 'doxie'
 cask 'flux'
+cask 'google-cloud-sdk'
 cask 'iterm2-beta'
 cask 'little-snitch'
 cask 'spectacle'
