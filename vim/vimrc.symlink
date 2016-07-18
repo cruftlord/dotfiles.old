@@ -103,7 +103,7 @@ set laststatus=2
 colorscheme molokai
 
 " Make stuff brown
-" let g:molokai_original = 1
+let g:molokai_original = 1
 
 let g:rehash256 = 1
 
@@ -175,6 +175,17 @@ nnoremap <C-H> <C-W><C-H>
 let g:EasyMotion_do_mapping = 1
 " Adjusts the leader binding
 map <Leader> <Plug>(easymotion-prefix)
+
+" replace the default search
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" Replace the standard hjkl
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0
 
 """"""""""""""
 " SWAP FILES "
