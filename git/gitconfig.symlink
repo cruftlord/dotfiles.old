@@ -25,7 +25,7 @@
     changed = yellow bold
     untracked = red bold
 [github]
-    user = sirgiganticus
+    user = cruftlord
 [gitlab]
     user = giganticus
 [push]
