@@ -38,5 +38,3 @@ man() {
     man "$@"
 }
 
-# Fixes tmux colours
-alias tmux="TERM=screen-256color-bce tmux"

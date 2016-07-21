@@ -49,6 +49,8 @@ brew 'thefuck'
 brew 'watch'
 brew 'wget'
 
+cask 'alfred'
+cask 'docker'
 cask 'doxie'
 cask 'flux'
 cask 'google-cloud-sdk'
