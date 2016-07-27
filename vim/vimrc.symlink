@@ -45,8 +45,9 @@ Plug 'mattn/webapi-vim'
 " You can find them in the dotfiles repo under fonts
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Molokai
-Plug 'fatih/molokai'
+
+" Solarized
+Plug 'altercation/vim-colors-solarized'
 
 " Put after all your plugins have installed
 call plug#end()
@@ -99,13 +100,10 @@ set laststatus=2
 """""""""""""""""
 " Colours stuff "
 """""""""""""""""
-" For terminals
-colorscheme molokai
 
-" Make stuff brown
-let g:molokai_original = 1
-
-let g:rehash256 = 1
+" Use Solarized Dark
+set background=dark
+colorscheme solarized
 
 """"""""""""""""""
 " Syntax & Stuff "

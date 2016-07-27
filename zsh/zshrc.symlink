@@ -34,7 +34,8 @@ fi
 typeset -U config_files
 # If you use antigen or some other package handler here, make sure to 
 # exclude its folder or you'll install every module
-config_files=($ZSH/**[^antigen.symlink]/*.zsh)
+setopt extended_glob
+config_files=($ZSH/(^antigen.symlink)/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
