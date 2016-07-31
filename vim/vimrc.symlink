@@ -100,10 +100,8 @@ set laststatus=2
 """""""""""""""""
 " Colours stuff "
 """""""""""""""""
-
-" Use Solarized Dark
-set background=dark
 colorscheme solarized
+set background=dark
 
 """"""""""""""""""
 " Syntax & Stuff "
@@ -152,6 +150,14 @@ set expandtab
 
 " Don't expand tabs for Go files
 au BufRead,BufNewFile *.{go|proto} set noexpandtab
+
+" Python PEP8 Standards
+au BufRead,BufNewFile *.{py|pyc} set tabstop=4
+au BufRead,BufNewFile *.{py|pyc} set softtabstop=4
+au BufRead,BufNewFile *.{py|pyc} set textwidth=79
+au BufRead,BufNewFile *.{py|pyc} set expandtab
+au BufRead,BufNewFile *.{py|pyc} set autoindent
+au BufRead,BufNewFile *.{py|pyc} set fileformat=unix
 
 """"""""""""""""
 " KEY BINDINGS "
