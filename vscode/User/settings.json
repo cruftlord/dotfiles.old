@@ -16,4 +16,9 @@
     "go.vetOnSave": true,
 
     "python.pythonPath": "/usr/local/bin/python3"
+
+    "TodoParser": {
+        "exclude": ["cpp", "c"],
+        "markers": ["TODO:" "NOTE:", "REMINDER:"]
+    }
 }
