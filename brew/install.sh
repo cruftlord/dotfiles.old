@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # The MIT License
 #
@@ -22,17 +22,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
+# Homebrew
 #
-#
-# Run all dotfiles installers.
+# This installs some of the common dependencies needed (or at least desired)
+# using Homebrew.
 
-set -e
+# Check for Homebrew
+if test ! $(which brew)
+then
+  echo "  Installing Homebrew for you."
 
-cd "$(dirname $0)"/..
+  # Install the correct homebrew for each OS type
+  if test "$(uname)" = "Darwin"
+  then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+  then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+  fi
 
-# find the installers and run them iteratively
-find . -not -path "*/YouCompleteMe/*" -not -path "*/antigen.symlink/*" -name install.sh | while read installer ; do sh -c "${installer}" ; done
+fi
 
-# Run Homebrew through the Brewfile
-echo "› brew bundle"
-brew bundle
+exit 0

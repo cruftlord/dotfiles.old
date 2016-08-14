@@ -2,7 +2,7 @@
 
 ## Set the Mac Name
 echo "Name this Computer"
-read MAC_NAME
+read MAC_NAME < /dev/tty
 sudo scutil --set ComputerName "$MAC_NAME"
 sudo scutil --set HostName "$MAC_NAME"
 sudo scutil --set LocalHostName "$MAC_NAME"

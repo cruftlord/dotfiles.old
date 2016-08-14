@@ -1,9 +1,9 @@
 # This is where VSCode installs its stuff
 CURRENT_OS=$(uname -s)
 if [ "$CURRENT_OS" = 'Darwin' ]; then
-    VSCODE_PATH="$HOME/Library/Application Support/Code/"
+    VSCODE_PATH="$HOME/Library/Application Support/Code"
 elif [ "$CURRENT_OS" = 'Linux' ]; then
-    VSCODE_PATH="$HOME/.config/Code/"
+    VSCODE_PATH="$HOME/.config/Code"
 fi
 
 # Get current directory
@@ -17,5 +17,6 @@ else
     # Link the file in
     echo "Linking files for VSCode"
     rm -rf "$VSCODE_PATH/User"
+    mkdir -p "$VSCODE_PATH"
     ln -s "$VSCODE_DOTFILES_DIR/User" "$VSCODE_PATH/User"
 fi
