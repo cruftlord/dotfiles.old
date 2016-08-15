@@ -12,10 +12,10 @@ Return a list of installed packages or nil for every skipped package."
   (mapcar
    (lambda (package)
      (if (package-installed-p package)
-         nil
+	 nil
        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
+	   (package-install package)
+	 package)))
    packages))
 
 ;; Make sure to have downloaded archive description.
@@ -29,7 +29,7 @@ Return a list of installed packages or nil for every skipped package."
 (ensure-package-installed 'color-theme-solarized
 			  'elpy
 			  'evil
-              'flycheck
+			  'flycheck
 			  'helm)
 			  
 ;; CONFIGURATION
@@ -47,6 +47,19 @@ Return a list of installed packages or nil for every skipped package."
 ; Line Numbers
 (global-linum-mode t)
 (setq linum-format "%d ")
+
+;; Backups - this stops backup cruft accumulating in folders
+(setq
+ backup-by-copying t ; won't overwrite symlinked files - most useful for .emacs!
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t
+ backup-directory-alist
+ `((".*" . ,temporary-file-directory))) ; put that shit in /tmp or something
+
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t))) ; also put this in temp
 
 ;; LANGUAGES
 
