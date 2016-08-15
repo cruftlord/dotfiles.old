@@ -26,10 +26,12 @@ Return a list of installed packages or nil for every skipped package."
 (package-initialize)
 
 ;; List packages here
-(ensure-package-installed 'evil
-			  'helm
-			  'color-theme-solarized)
-
+(ensure-package-installed 'color-theme-solarized
+			  'elpy
+			  'evil
+              'flycheck
+			  'helm)
+			  
 ;; CONFIGURATION
 
 ;; Evil Mode (Vim Bindings)
@@ -39,8 +41,25 @@ Return a list of installed packages or nil for every skipped package."
 ;; Helm
 (require 'helm-config)
 (helm-mode 1)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+; Line Numbers
+(global-linum-mode t)
+(setq linum-format "%d ")
+
+;; LANGUAGES
+
+;; Python
+; Enable Elpy
+(elpy-enable)
+; Use Flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; COLOURS
 (load-theme 'solarized t)
 (set-frame-parameter nil 'background-mode 'dark)
 (set-terminal-parameter nil 'background-mode 'dark)
+(set-variable 'solarized-termcolors '256)
