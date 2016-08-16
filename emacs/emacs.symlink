@@ -1,3 +1,4 @@
+;; -*- mode: lisp -*-
 ;; PACKAGE MANAGER
 (require 'package)
 
@@ -37,6 +38,9 @@ Return a list of installed packages or nil for every skipped package."
 ;; Evil Mode (Vim Bindings)
 (require 'evil)
 (evil-mode t)
+
+;; Org Mode
+(require 'org)
 
 ;; Helm
 (require 'helm-config)
