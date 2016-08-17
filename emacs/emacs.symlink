@@ -35,6 +35,7 @@ Return a list of installed packages or nil for every skipped package."
 			  'evil-easymotion
 			  ;; Python
 			  'elpy
+			  'jedi
 			  ;; Go
 			  'go-mode
 			  'go-eldoc
@@ -106,7 +107,12 @@ Return a list of installed packages or nil for every skipped package."
 ;;; Use Flycheck
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+  ;; Uncomment for Flycheck to auto-launch (which is annoying)
+  ;;  (add-hook 'elpy-mode-hook 'flycheck-mode)
+  )
+;;; Use Jedi - don't forget `M-x jedi:install-server` to make this work
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 
 ;; Go
 (defun go-mode-setup ()
