@@ -28,10 +28,28 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; List packages here
 (ensure-package-installed 'color-theme-solarized
-			  'elpy
-			  'evil
+			  'helm
 			  'flycheck
-			  'helm)
+			  ;; Vim Bindings
+			  'evil
+			  'evil-easymotion
+			  ;; Python
+			  'elpy
+			  ;; Go
+			  'go-mode
+			  'go-eldoc
+			  'go-autocomplete
+			  ;; JSON
+			  'json-mode
+			  ;; Markdown
+			  'markdown-mode
+			  ;; Hashicorp
+			  'hcl-mode
+			  'terraform-mode
+			  ;; Git
+			  'magit
+			  ;; Puppet
+			  'puppet-mode)
 			  
 ;; CONFIGURATION
 
@@ -48,9 +66,23 @@ Return a list of installed packages or nil for every skipped package."
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
-; Line Numbers
+;; Line Numbers
 (global-linum-mode t)
-(setq linum-format "%d ")
+(unless window-system
+  (add-hook 'linum-before-numbering-hook
+	    (lambda ()
+	      (setq-local linum-format-fmt
+			  (let ((w (length (number-to-string
+					    (count-lines (point-min) (point-max))))))
+			    (concat "%" (number-to-string w) "d"))))))
+
+(defun linum-format-func (line)
+  (concat
+    (propertize (format linum-format-fmt line) 'face 'linum)
+    (propertize " " 'face 'linum)))
+
+(unless window-system
+  (setq linum-format 'linum-format-func))
 
 ;; Backups - this stops backup cruft accumulating in folders
 (setq
@@ -65,15 +97,43 @@ Return a list of installed packages or nil for every skipped package."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))) ; also put this in temp
 
+
 ;; LANGUAGES
 
 ;; Python
-; Enable Elpy
+;;; Enable Elpy
 (elpy-enable)
-; Use Flycheck
+;;; Use Flycheck
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; Go
+(defun go-mode-setup ()
+  (go-eldoc-setup))
+(add-hook 'go-mode-hook 'go-mode-setup)
+;;; FMT on save
+(defun go-mode-setup ()
+  (go-eldoc-setup)
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-mode-hook 'go-mode-setup)
+;;; Goimports on save
+(defun go-mode-setup ()
+  (go-eldoc-setup)
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-mode-hook 'go-mode-setup)
+
+;; Hashicorp
+(custom-set-variables
+ '(hcl-indent-level 2)
+ '(terraform-indent-level 2))
+
+;; Autocomplete
+(ac-config-default)
+(require 'auto-complete-config)
+(require 'go-autocomplete)
+(ac-linum-workaround) ; Prevents the linum flickering
 
 ;; COLOURS
 (load-theme 'solarized t)
