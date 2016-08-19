@@ -28,7 +28,6 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; List packages here
 (ensure-package-installed 'color-theme-solarized
-			  'helm
 			  'flycheck
 			  ;; Vim Bindings
 			  'evil
@@ -36,6 +35,7 @@ Return a list of installed packages or nil for every skipped package."
 			  ;; Python
 			  'elpy
 			  'jedi
+			  'fill-column-indicator ; Puts a ruler at column 80
 			  ;; Go
 			  'go-mode
 			  'go-eldoc
@@ -54,18 +54,14 @@ Return a list of installed packages or nil for every skipped package."
 			  
 ;; CONFIGURATION
 
-;; Evil Mode (Vim Bindings)
+; Evil Mode (Vim Bindings)
 (require 'evil)
 (evil-mode t)
+(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes)) ; Stop all those windows coming up in emacs mode
+(setq evil-emacs-state-modes nil) ; this goes with above
 
 ;; Org Mode
 (require 'org)
-
-;; Helm
-(require 'helm-config)
-(helm-mode 1)
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
 
 ;; Line Numbers
 (global-linum-mode t)
@@ -113,6 +109,10 @@ Return a list of installed packages or nil for every skipped package."
 ;;; Use Jedi - don't forget `M-x jedi:install-server` to make this work
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+;;; Set column at 80
+(require 'fill-column-indicator)
+(defun python-fill-column () (set-fill-column 80) (fci-mode 1))
+(add-hook 'python-mode-hook 'python-fill-column)
 
 ;; Go
 (defun go-mode-setup ()
