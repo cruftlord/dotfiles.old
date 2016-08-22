@@ -67,6 +67,9 @@ Return a list of installed packages or nil for every skipped package."
 ;; Org Mode
 (require 'org)
 
+;; Magit (Git integration
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Line Numbers
 (global-linum-mode t)
 ;;; Calculate size of largest number and format Linum
@@ -87,6 +90,14 @@ Return a list of installed packages or nil for every skipped package."
 ;;; Unless we're in a GUI, enable this
 (unless window-system
   (setq linum-format 'linum-format-func))
+
+;;; Highlight Parenthesis
+(show-paren-mode 1)
+
+;;; Enable IDO Mode
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching 1)
 
 ;; Backups - this stops backup cruft accumulating in folders
 (setq
@@ -113,18 +124,11 @@ Return a list of installed packages or nil for every skipped package."
 (setq elpy-rpc-backend "jedi")
 
 ;; Go
-(defun go-mode-setup ()
-  (go-eldoc-setup))
-(add-hook 'go-mode-hook 'go-mode-setup)
-;;; FMT on save
-(defun go-mode-setup ()
-  (go-eldoc-setup)
-  (add-hook 'before-save-hook 'gofmt-before-save))
-(add-hook 'go-mode-hook 'go-mode-setup)
-;;; Goimports on save
+;;; This function holds settings
 (defun go-mode-setup ()
   (go-eldoc-setup)
   (setq gofmt-command "goimports")
+  (setq tab-width 4)
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
