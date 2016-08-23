@@ -26,7 +26,7 @@ Return a list of installed packages or nil for every skipped package."
     (package-refresh-contents))
 
 ;; List of packages here
-(ensure-package-installed 'color-theme-solarized
+(ensure-package-installed 'zenburn-theme
 			  ;; Project Exploring Tool
 			  'projectile
 			  ;; Syntax Checker (Useful for PEP8)
@@ -61,8 +61,6 @@ Return a list of installed packages or nil for every skipped package."
 ; Evil Mode (Vim Bindings)
 (require 'evil)
 (evil-mode t)
-(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes)) ; Stop all those windows coming up in emacs mode
-(setq evil-emacs-state-modes nil) ; this goes with above
 
 ;; Org Mode
 (require 'org)
@@ -111,7 +109,6 @@ Return a list of installed packages or nil for every skipped package."
 
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))) ; also put this in temp
-
 
 ;; LANGUAGES
 
