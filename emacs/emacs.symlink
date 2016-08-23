@@ -132,11 +132,6 @@ Return a list of installed packages or nil for every skipped package."
   (add-hook 'before-save-hook 'gofmt-before-save))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
-;; Hashicorp
-(custom-set-variables
- '(hcl-indent-level 2)
- '(terraform-indent-level 2))
-
 ;; Autocomplete
 (ac-config-default)
 (require 'auto-complete-config)
@@ -144,7 +139,12 @@ Return a list of installed packages or nil for every skipped package."
 (ac-linum-workaround) ; Prevents the linum flickering
 
 ;; COLOURS
-(load-theme 'solarized t)
+(load-theme 'zenburn t)
 (set-frame-parameter nil 'background-mode 'dark)
 (set-terminal-parameter nil 'background-mode 'dark)
-(set-variable 'solarized-termcolors '256)
+
+;; Custom
+(custom-set-variables
+ '(hcl-indent-level 2) ; Hashicorp files indent 2
+ '(terraform-indent-level 2) ; Terraform indentation
+)

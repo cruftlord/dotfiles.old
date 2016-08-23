@@ -1,10 +1,10 @@
 # enable color support of ls and also add handy aliases
-alias ls='ls --color=always'
-alias dir='dir --color=always'
-alias vdir='vdir --color=always'
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
 
-alias grep='grep --color=always'
-alias fgrep='fgrep --color=always'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color'
 
 # some more ls aliases
@@ -19,7 +19,7 @@ alias g++='g++-5'
 alias c++='c++-5'
 
 # Always give colours for less
-alias less='less --color=always'
+alias less='less --color=auto'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
