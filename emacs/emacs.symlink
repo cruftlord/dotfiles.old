@@ -26,7 +26,7 @@ Return a list of installed packages or nil for every skipped package."
     (package-refresh-contents))
 
 ;; List of packages here
-(ensure-package-installed 'zenburn-theme
+(ensure-package-installed 'color-theme-solarized
 			  ;; Project Exploring Tool
 			  'projectile
 			  ;; Syntax Checker (Useful for PEP8)
@@ -136,12 +136,13 @@ Return a list of installed packages or nil for every skipped package."
 (ac-linum-workaround) ; Prevents the linum flickering
 
 ;; COLOURS
-(load-theme 'zenburn t)
+(load-theme 'solarized t)
 (set-frame-parameter nil 'background-mode 'dark)
 (set-terminal-parameter nil 'background-mode 'dark)
 
 ;; Custom
 (custom-set-variables
+ '(solarized-termcolors 256) ; Fix Terminal Solarized Colours
  '(hcl-indent-level 2) ; Hashicorp files indent 2
  '(terraform-indent-level 2) ; Terraform indentation
 )
