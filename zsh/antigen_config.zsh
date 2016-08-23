@@ -17,9 +17,6 @@ antigen bundle virtualenv
 # Start the SSH Agent
 antigen bundle ssh-agent
 
-# Syntax highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-
 # Test for OS
 CURRENT_OS=`uname -s`
 if [[ $CURRENT_OS == 'Darwin' ]]; then
@@ -32,7 +29,9 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     # None so far...
 fi
 
+# Syntax highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 # End antigen
 antigen apply
-
 

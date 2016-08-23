@@ -30,9 +30,6 @@ if [[ -s "${HOME}/.localrc" ]]; then
     source "${HOME}/.localrc"
 fi
 
-# Dircolors
-eval $( dircolors -b $HOME/.dir_colors )
-
 # all of our zsh files
 typeset -U config_files
 # If you use antigen or some other package handler here, make sure to 
@@ -63,3 +60,4 @@ do
 done
 
 unset config_files
+
