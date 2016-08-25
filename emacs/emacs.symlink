@@ -113,11 +113,12 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Speedbar
 (require 'sr-speedbar)
-(global-set-key (kbd "f5") 'sr-speedbar-toggle)
-(global-set-key (kbd "C-w m") 'sr-speedbar-select-window)
+(global-set-key (kbd "<f5>") 'sr-speedbar-toggle)
+(global-set-key (kbd "C-c m") 'sr-speedbar-select-window)
 (setq sr-speedbar-right-side nil) ; Put it on the left
 (setq speedbar-show-unknown-files t) ; Show all the files
 (setq speedbar-use-images nil) ; Don't show icons
+(speedbar-add-supported-extension ".go") ; handle Go
 
 ;; LANGUAGES
 
@@ -126,7 +127,7 @@ Return a list of installed packages or nil for every skipped package."
 (when (require 'elpy nil t)
   (elpy-enable))
 
-;;; Use Jedi - don't forget to pip install this to make this work
+;;; Use Jedi - don't forget to pip install this with 'M-x elpy-config' to make this work
 (setq elpy-rpc-backend "jedi")
 
 ;;; Virtualenv hook - restart Python when switching envs
