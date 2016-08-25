@@ -27,6 +27,8 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; List of packages here
 (ensure-package-installed 'color-theme-solarized
+			  ;; Sidebar thingy
+			  'sr-speedbar
 			  ;; Project Exploring Tool
 			  'projectile
 			  ;; Syntax Checker (Useful for PEP8)
@@ -36,7 +38,6 @@ Return a list of installed packages or nil for every skipped package."
 			  'evil-easymotion
 			  ;; Python
 			  'elpy
-			  'jedi
 			  'fill-column-indicator ; Puts a ruler at column 80
 			  ;; Go
 			  'go-mode
@@ -110,6 +111,14 @@ Return a list of installed packages or nil for every skipped package."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t))) ; also put this in temp
 
+;; Speedbar
+(require 'sr-speedbar)
+(global-set-key (kbd "f5") 'sr-speedbar-toggle)
+(global-set-key (kbd "C-w m") 'sr-speedbar-select-window)
+(setq sr-speedbar-right-side nil) ; Put it on the left
+(setq speedbar-show-unknown-files t) ; Show all the files
+(setq speedbar-use-images nil) ; Don't show icons
+
 ;; LANGUAGES
 
 ;; Python
@@ -117,8 +126,11 @@ Return a list of installed packages or nil for every skipped package."
 (when (require 'elpy nil t)
   (elpy-enable))
 
-;;; Use Jedi - don't forget `M-x jedi:install-server` to make this work
+;;; Use Jedi - don't forget to pip install this to make this work
 (setq elpy-rpc-backend "jedi")
+
+;;; Virtualenv hook - restart Python when switching envs
+(add-hook 'pyvenv-post-activate-hook 'pyvenv-restart-python)
 
 ;; Go
 ;;; This function holds settings
