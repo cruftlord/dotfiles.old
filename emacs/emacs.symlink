@@ -29,6 +29,8 @@ Return a list of installed packages or nil for every skipped package."
 (ensure-package-installed 'color-theme-solarized
 			  ;; Sidebar thingy
 			  'sr-speedbar
+			  ;; YAMLs
+			  'yaml-mode
 			  ;; Project Exploring Tool
 			  'projectile
 			  ;; Syntax Checker (Useful for PEP8)
