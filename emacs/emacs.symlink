@@ -117,9 +117,9 @@ Return a list of installed packages or nil for every skipped package."
 (require 'sr-speedbar)
 (global-set-key (kbd "<f5>") 'sr-speedbar-toggle)
 (global-set-key (kbd "C-c m") 'sr-speedbar-select-window)
-(setq sr-speedbar-right-side nil) ; Put it on the left
-(setq speedbar-show-unknown-files t) ; Show all the files
-(setq speedbar-use-images nil) ; Don't show icons
+(defvar sr-speedbar-right-side nil) ; Put it on the left
+(defvar speedbar-show-unknown-files t) ; Show all the files
+(defvar speedbar-use-images nil) ; Don't show icons
 (speedbar-add-supported-extension ".go") ; handle Go
 
 ;; LANGUAGES
@@ -157,7 +157,19 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Custom
 (custom-set-variables
- '(solarized-termcolors 256) ; Fix Terminal Solarized Colours
- '(hcl-indent-level 2) ; Hashicorp files indent 2
- '(terraform-indent-level 2) ; Terraform indentation
-)
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hcl-indent-level 2)
+ '(package-selected-packages
+   (quote
+    (dockerfile-mode puppet-mode magit terraform-mode hcl-mode markdown-mode json-mode go-autocomplete go-eldoc go-mode fill-column-indicator elpy evil-easymotion evil flycheck projectile yaml-mode sr-speedbar color-theme-solarized)))
+ '(solarized-termcolors 256)
+ '(terraform-indent-level 2))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
