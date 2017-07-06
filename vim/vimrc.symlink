@@ -47,8 +47,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Solarized
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 
+" Monokai
+Plug 'crusoexia/vim-monokai'
 " Put after all your plugins have installed
 call plug#end()
 
@@ -100,8 +102,11 @@ set laststatus=2
 """""""""""""""""
 " Colours stuff "
 """""""""""""""""
-colorscheme solarized
-set background=dark
+colorscheme monokai
+"set background=dark
+
+" For monokai the below setting must be made. Otherwise comment it out
+set t_Co=256
 
 """"""""""""""""""
 " Syntax & Stuff "
