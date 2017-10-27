@@ -149,8 +149,8 @@ filetype plugin indent on
 syntax on
 
 " I code in Go so tabs are critical
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Don't expand tabs for Go files

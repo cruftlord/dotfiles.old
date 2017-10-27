@@ -5,6 +5,7 @@ HISTFILE=~/.zsh_history
 
 # Set Vim mode
 bindkey -v
+bindkey "^R" history-incremental-pattern-search-backward
 
 # Remove lag going into Vim mode
 export KEYTIMEOUT=1
