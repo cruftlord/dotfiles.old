@@ -53,13 +53,12 @@ set-option -g default-shell /usr/local/bin/zsh
 # increase scrollback lines
 set -g history-limit 99999
 
-# copy with 'enter' or 'y' and send to mac os clipboard: http://goo.gl/2Bfn8
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
-
-# create 'v' alias for selecting text
-bind-key -t vi-copy v begin-selection
+# Vimmy bindings
+unbind-key -T copy-mode-vi Space     ;   bind-key -T copy-mode-vi v send-keys -X begin-selection
+unbind-key -T copy-mode-vi Enter     ;   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+unbind-key -T copy-mode-vi C-v       ;   bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+unbind-key -T copy-mode-vi [         ;   bind-key -T copy-mode-vi [ send-keys -X begin-selection
+unbind-key -T copy-mode-vi ]         ;   bind-key -T copy-mode-vi ] send-keys -X copy-selection
 
 # ----------------------
 # Status Bar
