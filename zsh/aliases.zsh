@@ -18,6 +18,9 @@ alias cc='gcc-5'
 alias g++='g++-5'
 alias c++='c++-5'
 
+# use Hub
+alias git='hub'
+
 # Always give colours for less
 alias less='less --color=auto'
 
