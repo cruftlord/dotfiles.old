@@ -3,4 +3,4 @@ vscode/User/workspaceStorage
 vscode/User/workspaceStorage/*
 vscode/User/syncSettings.json
 splunk/
-*/.netrwhist
+*.*netrwhist
