@@ -54,3 +54,4 @@ brew 'swift'
 brew 'terraform'
 brew 'thefuck'
 
+cask 'iterm2'
